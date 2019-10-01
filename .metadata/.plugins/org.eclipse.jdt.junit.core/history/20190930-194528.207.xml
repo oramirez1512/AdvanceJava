@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="co.edu.usbcali.demo.vehiculo" project="springDemo1" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="co.edu.usbcali.demo.vehiculo.AutomovilAppOneTest" time="0.513" displayname="AutomovilAppOneTest" uniqueid="[engine:junit-jupiter]/[class:co.edu.usbcali.demo.vehiculo.AutomovilAppOneTest]">
+    <testcase name="test" classname="co.edu.usbcali.demo.vehiculo.AutomovilAppOneTest" time="0.513" displayname="test()" uniqueid="[engine:junit-jupiter]/[class:co.edu.usbcali.demo.vehiculo.AutomovilAppOneTest]/[method:test()]"/>
+  </testsuite>
+  <testsuite name="co.edu.usbcali.demo.vehiculo.AutomovilAppTwoTest" time="0.036" displayname="AutomovilAppTwoTest" uniqueid="[engine:junit-jupiter]/[class:co.edu.usbcali.demo.vehiculo.AutomovilAppTwoTest]">
+    <testcase name="test" classname="co.edu.usbcali.demo.vehiculo.AutomovilAppTwoTest" time="0.036" displayname="test()" uniqueid="[engine:junit-jupiter]/[class:co.edu.usbcali.demo.vehiculo.AutomovilAppTwoTest]/[method:test()]"/>
+  </testsuite>
+</testrun>

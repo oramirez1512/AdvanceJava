@@ -1,0 +1,19 @@
+package co.edu.usbcali.demo.vehiculo;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+class AutomovilAppOneTest {
+
+	@Test
+	void test() {
+		ApplicationContext applicationContext = 
+				new ClassPathXmlApplicationContext("applicationcontextone.xml");
+		
+		assertNotNull(applicationContext, "applicationContext is null");
+	}
+
+}

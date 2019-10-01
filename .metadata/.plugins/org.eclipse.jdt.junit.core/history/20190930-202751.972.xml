@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="java" project="springDemo1" tests="5" started="5" failures="0" errors="0" ignored="0">
+  <testsuite name="co.edu.usbcali.demo.vehiculo.AutomovilAppFiveTest" time="0.011" displayname="AutomovilAppFiveTest" uniqueid="[engine:junit-jupiter]/[class:co.edu.usbcali.demo.vehiculo.AutomovilAppFiveTest]">
+    <testcase name="test" classname="co.edu.usbcali.demo.vehiculo.AutomovilAppFiveTest" time="0.011" displayname="test()" uniqueid="[engine:junit-jupiter]/[class:co.edu.usbcali.demo.vehiculo.AutomovilAppFiveTest]/[method:test()]"/>
+  </testsuite>
+  <testsuite name="co.edu.usbcali.demo.vehiculo.AutomovilAppOneTest" time="0.12" displayname="AutomovilAppOneTest" uniqueid="[engine:junit-jupiter]/[class:co.edu.usbcali.demo.vehiculo.AutomovilAppOneTest]">
+    <testcase name="test" classname="co.edu.usbcali.demo.vehiculo.AutomovilAppOneTest" time="0.12" displayname="test()" uniqueid="[engine:junit-jupiter]/[class:co.edu.usbcali.demo.vehiculo.AutomovilAppOneTest]/[method:test()]"/>
+  </testsuite>
+  <testsuite name="co.edu.usbcali.demo.vehiculo.AutomovilAppFourTest" time="0.02" displayname="AutomovilAppFourTest" uniqueid="[engine:junit-jupiter]/[class:co.edu.usbcali.demo.vehiculo.AutomovilAppFourTest]">
+    <testcase name="test" classname="co.edu.usbcali.demo.vehiculo.AutomovilAppFourTest" time="0.02" displayname="test()" uniqueid="[engine:junit-jupiter]/[class:co.edu.usbcali.demo.vehiculo.AutomovilAppFourTest]/[method:test()]"/>
+  </testsuite>
+  <testsuite name="co.edu.usbcali.demo.vehiculo.AutomovilAppTwoTest" time="0.016" displayname="AutomovilAppTwoTest" uniqueid="[engine:junit-jupiter]/[class:co.edu.usbcali.demo.vehiculo.AutomovilAppTwoTest]">
+    <testcase name="test" classname="co.edu.usbcali.demo.vehiculo.AutomovilAppTwoTest" time="0.016" displayname="test()" uniqueid="[engine:junit-jupiter]/[class:co.edu.usbcali.demo.vehiculo.AutomovilAppTwoTest]/[method:test()]"/>
+  </testsuite>
+  <testsuite name="co.edu.usbcali.demo.vehiculo.AutomovilAppThreeTest" time="0.021" displayname="AutomovilAppThreeTest" uniqueid="[engine:junit-jupiter]/[class:co.edu.usbcali.demo.vehiculo.AutomovilAppThreeTest]">
+    <testcase name="test" classname="co.edu.usbcali.demo.vehiculo.AutomovilAppThreeTest" time="0.021" displayname="test()" uniqueid="[engine:junit-jupiter]/[class:co.edu.usbcali.demo.vehiculo.AutomovilAppThreeTest]/[method:test()]"/>
+  </testsuite>
+</testrun>

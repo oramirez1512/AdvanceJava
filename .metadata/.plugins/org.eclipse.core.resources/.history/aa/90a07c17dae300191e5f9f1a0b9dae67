@@ -1,0 +1,10 @@
+package co.edu.usbcali.demo.vehiculo;
+
+public class Motor {
+	
+	private Integer cc;
+	private String mark;
+	private Boolean electric;
+	
+
+}

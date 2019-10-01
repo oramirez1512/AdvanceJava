@@ -1,0 +1,18 @@
+package co.edu.usbcali.demo.vehiculo;
+
+public class VehicleService {
+	
+	private static VehicleService vehicleService;
+	
+	private VehicleService() {
+		
+	}
+	
+	public static VehicleService createInstance() {
+		if(vehicleService==null) {
+			vehicleService = new VehicleService();
+		}
+		return vehicleService;
+	}
+
+}

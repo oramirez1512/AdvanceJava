@@ -1,0 +1,28 @@
+package co.edu.usbcali.demo.vehiculo;
+
+public class Automovil {
+
+	private Motor motor;
+	private String color;
+	private Integer serial;
+	
+	//Setters and Getters
+	public Motor getMotor() {
+		return motor;
+	}
+	public void setMotor(Motor motor) {
+		this.motor = motor;
+	}
+	public String getColor() {
+		return color;
+	}
+	public void setColor(String color) {
+		this.color = color;
+	}
+	public Integer getSerial() {
+		return serial;
+	}
+	public void setSerial(Integer serial) {
+		this.serial = serial;
+	}
+}

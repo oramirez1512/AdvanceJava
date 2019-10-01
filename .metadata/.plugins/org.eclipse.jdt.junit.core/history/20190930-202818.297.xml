@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="AutomovilAppFiveTest" project="springDemo1" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="co.edu.usbcali.demo.vehiculo.AutomovilAppFiveTest" time="0.009" displayname="AutomovilAppFiveTest" uniqueid="[engine:junit-jupiter]/[class:co.edu.usbcali.demo.vehiculo.AutomovilAppFiveTest]">
+    <testcase name="test" classname="co.edu.usbcali.demo.vehiculo.AutomovilAppFiveTest" time="0.009" displayname="test()" uniqueid="[engine:junit-jupiter]/[class:co.edu.usbcali.demo.vehiculo.AutomovilAppFiveTest]/[method:test()]"/>
+  </testsuite>
+</testrun>
