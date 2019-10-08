@@ -1,9 +1,20 @@
 package co.edu.usbcali.bank.domain;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
 /**
@@ -17,12 +28,19 @@ public class Cliente implements Serializable {
 
 	@Id
 	@Column(name="clie_id")
+	@NotNull
 	private Long clieId;
 
+	@NotNull
+	@Size(min = 1, max = 1)
 	private String activo;
 
+	@NotNull
+	@Size(min = 5, max = 150)
 	private String direccion;
 
+	@NotNull
+	@Email(message = "El correo electronico no es valido.")
 	private String email;
 
 	@Column(name="fecha_creacion")
@@ -31,8 +49,12 @@ public class Cliente implements Serializable {
 	@Column(name="fecha_modificacion")
 	private Timestamp fechaModificacion;
 
+	@NotNull
+	@Size(min = 5, max = 150)
 	private String nombre;
 
+	@NotNull
+	@Size(min = 8, max = 30)
 	private String telefono;
 
 	@Column(name="usu_creador")
@@ -44,6 +66,7 @@ public class Cliente implements Serializable {
 	//bi-directional many-to-one association to TipoDocumento
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="tdoc_id")
+	@NotNull
 	private TipoDocumento tipoDocumento;
 
 	//bi-directional many-to-one association to Cuenta

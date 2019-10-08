@@ -2,19 +2,18 @@ package co.edu.usbcali.bank.repository;
 
 import java.util.List;
 import java.util.Optional;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
-
 import co.edu.usbcali.bank.domain.Cliente;
+
 @Repository
 @Scope("singleton")
-public class ClienteRepositoryImpl implements IClienteRepository {
+public class ClienteRepositoryImpl implements ClienteRepository {
 
-	
 	@PersistenceContext
 	EntityManager entityManager;
 	
@@ -25,16 +24,16 @@ public class ClienteRepositoryImpl implements IClienteRepository {
 	}
 
 	@Override
-	public Optional<Cliente> findById(Long id) {
-		Cliente cliente= entityManager.find(Cliente.class,id);
+	public Optional<Cliente> findById(Long pk) {
+		
+		Cliente cliente = entityManager.find(Cliente.class, pk);
 		Optional<Cliente> optional = Optional.ofNullable(cliente);
 		return optional;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
-	public List<Cliente> findall() {
-		return entityManager.createQuery("FROM Cliente").getResultList();
+	public List<Cliente> findAll() {
+		return entityManager.createQuery("FROM Cliente", Cliente.class).getResultList();
 	}
 
 	@Override
@@ -43,15 +42,10 @@ public class ClienteRepositoryImpl implements IClienteRepository {
 	}
 
 	@Override
-	public void deleteById(Long id) {
-		/*
-		Optional<Cliente> clienteOptional = findById(id);
-		if(clienteOptional.isPresent()) {
-			Cliente cliente = clienteOptional.get();
-			delete(cliente);
-		}
-		*/
-		findById(id).ifPresent(cliente->delete(cliente));
+	public void deleteById(Long pk) {
+		// TODO Auto-generated method stub
+		Optional<Cliente> clienteOpcional = this.findById(pk);
+		clienteOpcional.ifPresent(cliente -> delete(cliente));
 	}
 
 }

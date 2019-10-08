@@ -19,16 +19,16 @@ import org.slf4j.LoggerFactory;
 import co.edu.usbcali.bank.domain.Cliente;
 import co.edu.usbcali.bank.domain.TipoDocumento;
 
-class ClienteJPATest {
+class ClienteJpaTest {
+
+	private final static Long clieId = 4560L; 
 	
-	private final static Long clieId=4560L;
-	EntityManagerFactory entityManagerFactory= null;
-	EntityManager entityManager=null;
-	
+	EntityManagerFactory entityManagerFactory = null;
+	EntityManager entityManager = null;
 	
 	@BeforeEach
 	void beforeEach() {
-		entityManagerFactory= Persistence.createEntityManagerFactory("bank-logic");
+		entityManagerFactory = Persistence.createEntityManagerFactory("bank-logic");
 		entityManager = entityManagerFactory.createEntityManager();
 	}
 	
@@ -37,94 +37,99 @@ class ClienteJPATest {
 		entityManager.close();
 		entityManagerFactory.close();
 	}
-	@Test
-	void test() {
-		
-		assertNotNull(entityManager,"entityManager is null");
-		
-	}
-	
-	
 	
 	@Test
 	@DisplayName("save")
 	void aTest() {
-		assertNotNull(entityManager,"entityManager is null");
+		//fail("Not yet implemented");
+		assertNotNull(entityManager, "Entity manager es nulo.");
+		
 		Cliente cliente = entityManager.find(Cliente.class, clieId);
-		assertNull(cliente,"Client with id:"+clieId+" already exists");
+		assertNull(cliente, "Cliente con id: "+clieId+" ya existe.");
 		
 		cliente = new Cliente();
-		cliente.setActivo("S");
 		cliente.setClieId(clieId);
-		cliente.setDireccion("avenida siempreviva 123");
-		cliente.setDireccion("HomeroJSimpson@gmail.com");
-		cliente.setNombre("Homero J Simpson");
+		cliente.setActivo("S");
+		cliente.setDireccion("Calle falsa 123");
+		cliente.setEmail("HomeroJSimpson@gmail.com");
+		cliente.setNombre("Homero J. Simpson");
 		cliente.setTelefono("555 555 555");
 		
 		TipoDocumento tipoDocumento = entityManager.find(TipoDocumento.class, 1L);
-		assertNotNull(tipoDocumento, "is null");
+		assertNotNull(tipoDocumento, "El tipo de documento con id: 1 no existe.");
+		
+		cliente.setTipoDocumento(tipoDocumento);
 		
 		entityManager.getTransaction().begin();
 			entityManager.persist(cliente);
-			entityManager.getTransaction().commit();
-		
-	}		
+		entityManager.getTransaction().commit();
+	}
+
 	@Test
 	@DisplayName("findById")
 	void bTest() {
-		assertNotNull(entityManager,"entityManager is null");
-		Cliente cliente= entityManager.find(Cliente.class,clieId);
-		assertNotNull(cliente, "Client with id:"+clieId+" already exists");
-	}
+		//fail("Not yet implemented");
+		assertNotNull(entityManager, "Entity manager es nulo.");
+		
+		Cliente cliente = entityManager.find(Cliente.class, clieId);
+		assertNotNull(cliente, "Cliente con id: "+clieId+" no existe.");
+	}	
+
 	@Test
 	@DisplayName("update")
 	void cTest() {
-		assertNotNull(entityManager,"entityManager is null");
-		Cliente cliente = entityManager.find(Cliente.class, clieId);
-		assertNotNull(cliente,"Client with id:"+clieId+" not exists");
+		//fail("Not yet implemented");
+		assertNotNull(entityManager, "Entity manager es nulo.");
 		
+		Cliente cliente = entityManager.find(Cliente.class, clieId);
+		assertNotNull(cliente, "Cliente con id: "+clieId+" no existe.");		
+
 		cliente.setActivo("N");
 		
 		entityManager.getTransaction().begin();
-			entityManager.merge(cliente);			
-			entityManager.getTransaction().commit();
-			entityManager.refresh(cliente);
+			entityManager.merge(cliente);
+		entityManager.getTransaction().commit();
 		
-	}	
+		entityManager.refresh(cliente);
+	}
+	
 	@Test
 	@DisplayName("delete")
 	void dTest() {
-		assertNotNull(entityManager,"entityManager is null");
+		//fail("Not yet implemented");
+		assertNotNull(entityManager, "Entity manager es nulo.");
+		
 		Cliente cliente = entityManager.find(Cliente.class, clieId);
-		assertNotNull(cliente,"Client with id:"+clieId+" not exists");
-		
-		
+		assertNotNull(cliente, "Cliente con id: "+clieId+" no existe.");		
+
+		cliente.setActivo("N");
 		
 		entityManager.getTransaction().begin();
-			entityManager.remove(cliente);			
-			entityManager.getTransaction().commit();
-		
+			entityManager.remove(cliente);
+		entityManager.getTransaction().commit();
 	}
 	
-	private final static Logger log = LoggerFactory.getLogger(ClienteJPATest.class);
-	
+	private final static Logger log = LoggerFactory.getLogger(ClienteJpaTest.class);
+
 	@Test
 	@DisplayName("findAll")
 	void eTest() {
-		assertNotNull(entityManager, "entityManager is null");
-		String jpql= "SELECT cli FROM Cliente cli";
-		Query query = entityManager.createQuery(jpql);
-		List<Cliente> clients=query.getResultList();
-		assertNotNull(clients);
-		assertFalse(clients.isEmpty());
+		//fail("Not yet implemented");
+		assertNotNull(entityManager, "Entity manager es nulo.");
 		
-		for (Cliente cliente : clients) {
-			log.info(cliente.getNombre());			
+		String jpql = "SELECT cli FROM Cliente cli";
+		Query query = entityManager.createQuery(jpql);
+		
+		List<Cliente> clientes = query.getResultList();
+		assertNotNull(clientes);
+		assertFalse(clientes.isEmpty());
+		
+		for (Cliente cliente : clientes) {
+			log.info(cliente.getNombre());
 		}
 		
-		clients.forEach(cliente ->{
+		clientes.forEach(cliente -> {
 			log.info(cliente.getNombre());
 		});
 	}
-
 }

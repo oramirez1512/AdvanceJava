@@ -11,10 +11,9 @@ import org.springframework.stereotype.Repository;
 
 import co.edu.usbcali.bank.domain.TipoDocumento;
 
-
 @Repository
 @Scope("singleton")
-public class TipoDocumentoRepositoryImpl implements ITipoDcoumentoRepository{
+public class TipoDocumentoRepositoryImpl implements TipoDocumentoRepository {
 
 	@PersistenceContext
 	EntityManager entityManager;
@@ -26,25 +25,23 @@ public class TipoDocumentoRepositoryImpl implements ITipoDcoumentoRepository{
 	}
 
 	@Override
-	public Optional<TipoDocumento> findById(Long id) {
-		return Optional.ofNullable(entityManager.find(TipoDocumento.class,id));
+	public Optional<TipoDocumento> findById(Long pk) {
+		return Optional.ofNullable(entityManager.find(TipoDocumento.class, pk));
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
-	public List<TipoDocumento> findall() {
-		return entityManager.createQuery("FROM TipoDocumento").getResultList();
+	public List<TipoDocumento> findAll() {
+		return entityManager.createQuery("FROM TipoDocumento", TipoDocumento.class).getResultList();
 	}
 
 	@Override
 	public void delete(TipoDocumento entity) {
 		entityManager.remove(entity);
-		
 	}
 
 	@Override
-	public void deleteById(Long id) {
-		findById(id).ifPresent(t->delete(t));
+	public void deleteById(Long pk) {
+		findById(pk).ifPresent(tipoDocumento -> delete(tipoDocumento));
 	}
 
 }

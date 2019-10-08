@@ -1,10 +1,13 @@
 package co.edu.usbcali.bank.repository;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.List;
 import java.util.Optional;
 
-import javax.validation.constraints.AssertTrue;
+import javax.persistence.Query;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,72 +23,112 @@ import org.springframework.transaction.annotation.Transactional;
 
 import co.edu.usbcali.bank.domain.Cliente;
 
-
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration("/applicationContext.xml")
 @Rollback(false)
 class ClienteRepositoryTest {
 
-	
-	private final static Long clieId=4560L;
 	private final static Logger log = LoggerFactory.getLogger(ClienteRepositoryTest.class);
+
+	private final static Long clieId = 4560L;
+
 	@Autowired
-	IClienteRepository iClienteRepository;
-	
+	ClienteRepository clienteRepository;
+
 	@Autowired
-	ITipoDcoumentoRepository iTipoDcoumentoRepository;
-	
+	TipoDocumentoRepository tipoDocumentoRepository;
+
+	@Test
+	@DisplayName("test")
+	void test() {
+		assertNotNull(clienteRepository);
+		assertNotNull(tipoDocumentoRepository);
+	}
+
 	@Test
 	@DisplayName("save")
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	void aTest() {
-		assertNotNull(iClienteRepository,"iClienteRepository is null");
-		assertNotNull(iTipoDcoumentoRepository,"iTipoDcoumentoRepository is null");
-		assertFalse(iClienteRepository.findById(clieId).isPresent());
+		assertNotNull(clienteRepository);
+		assertNotNull(tipoDocumentoRepository);
 		
+		assertFalse(clienteRepository.findById(clieId).isPresent(), "Cliente con id: " + clieId + " ya existe.");
+
 		Cliente cliente = new Cliente();
-		cliente.setActivo("S");
 		cliente.setClieId(clieId);
-		cliente.setDireccion("avenida siempreviva 123");
-		cliente.setDireccion("HomeroJSimpson@gmail.com");
-		cliente.setNombre("Homero J Simpson");
+		cliente.setActivo("S");
+		cliente.setDireccion("Calle falsa 123");
+		cliente.setEmail("HomeroJSimpson@gmail.com");
+		cliente.setNombre("Homero J. Simpson");
 		cliente.setTelefono("555 555 555");
-		
-		assertTrue(iTipoDcoumentoRepository.findById(1l).isPresent(), "El tipo de documento no existe");
-		cliente.setTipoDocumento(iTipoDcoumentoRepository.findById(1L).get());
-		
-		iClienteRepository.save(cliente);
-		
+
+		assertTrue(tipoDocumentoRepository.findById(1L).isPresent(), "Tipo de documento con id 1 ya existe.");
+
+		cliente.setTipoDocumento(tipoDocumentoRepository.findById(1L).get());
+		clienteRepository.save(cliente);
 	}
+
 	@Test
 	@DisplayName("findById")
 	@Transactional(readOnly = true)
 	void bTest() {
-		assertNotNull(iClienteRepository,"iClienteRepository is null");
-		Optional<Cliente> clienOptional=iClienteRepository.findById(clieId);
-		assertTrue(clienOptional.isPresent());
+		assertNotNull(clienteRepository);
+		assertNotNull(tipoDocumentoRepository);
+		
+		Optional<Cliente> clienteOpcional = clienteRepository.findById(clieId);
+		assertTrue(clienteOpcional.isPresent(), "Cliente con id: " + clieId + " no existe.");
 	}
+
 	@Test
 	@DisplayName("update")
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	void cTest() {
-		assertNotNull(iClienteRepository,"iClienteRepository is null");
-		Optional<Cliente> clienteOptional = iClienteRepository.findById(clieId);
-		assertTrue(clienteOptional.isPresent(),"Client with id:"+clieId+" not exists");
-		
-		Cliente cliente= clienteOptional.get();
+		assertNotNull(clienteRepository);
+		assertNotNull(tipoDocumentoRepository);
+				
+		Optional<Cliente> clienteOpcional = clienteRepository.findById(clieId);
+		assertTrue(clienteOpcional.isPresent(), "Cliente con id: "+clieId+" no existe.");		
+
+		Cliente cliente = clienteOpcional.get();
 		cliente.setActivo("N");
-		iClienteRepository.save(cliente);
+		
+		clienteRepository.save(cliente);
 	}
-	
+
 	@Test
 	@DisplayName("delete")
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	void dTest() {
-		assertNotNull(iClienteRepository,"iClienteRepository is null");
-		Optional<Cliente> clienteOptional = iClienteRepository.findById(clieId);
-		assertTrue(clienteOptional.isPresent(),"Client with id:"+clieId+" not exists");		
-		Cliente cliente= clienteOptional.get();
-		iClienteRepository.save(cliente);
+		assertNotNull(clienteRepository);
+		assertNotNull(tipoDocumentoRepository);
+		
+		Optional<Cliente> clienteOpcional = clienteRepository.findById(clieId);
+		assertTrue(clienteOpcional.isPresent(), "Cliente con id: "+clieId+" no existe.");		
+
+		Cliente cliente = clienteOpcional.get();
+		cliente.setActivo("N");
+		
+		clienteRepository.delete(cliente);
 	}
 
+	@Test
+	@DisplayName("findAll")
+	@Transactional(readOnly = true)
+	void eTest() {
+		assertNotNull(clienteRepository);
+		assertNotNull(tipoDocumentoRepository);
+		
+		List<Cliente> clientes = clienteRepository.findAll();
+		
+		assertNotNull(clientes);
+		assertFalse(clientes.isEmpty());
+		
+		for (Cliente cliente : clientes) {
+			log.info(cliente.getNombre());
+		}
+		
+		clientes.forEach(cliente -> {
+			log.info(cliente.getNombre());
+		});
+	}
 }
