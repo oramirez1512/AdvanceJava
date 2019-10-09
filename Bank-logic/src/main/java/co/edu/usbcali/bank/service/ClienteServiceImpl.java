@@ -58,7 +58,7 @@ public class ClienteServiceImpl implements ClienteService {
 			throw new Exception("El tipo de documento con id: "+cliente.getTipoDocumento().getTdocId()+" no existe.");
 		}
 		
-		/*Cliente entity=clienteRepository.findById(cliente.getClieId()).get();
+		Cliente entity=clienteRepository.findById(cliente.getClieId()).get();
 		entity.setActivo(cliente.getActivo());
 		entity.setDireccion(cliente.getDireccion());
 		entity.setEmail(cliente.getEmail());
@@ -68,9 +68,9 @@ public class ClienteServiceImpl implements ClienteService {
 		entity.setTelefono(cliente.getTelefono());
 		entity.setTipoDocumento(cliente.getTipoDocumento());
 		
-		return clienteRepository.save(entity);*/
+		return clienteRepository.save(entity);
 
-		return clienteRepository.save(cliente);
+		//return clienteRepository.save(cliente);
 	}
 
 	@Override
