@@ -8,6 +8,8 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +18,8 @@ import co.edu.usbcali.bank.domain.Usuario;
 import co.edu.usbcali.bank.repository.TipoUsuarioRepository;
 import co.edu.usbcali.bank.repository.UserRepository;
 
+@Service
+@Scope("singleton")
 public class UserServiceImpl implements UserService{
 
 	@Autowired
