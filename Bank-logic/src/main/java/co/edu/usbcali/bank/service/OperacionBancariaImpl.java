@@ -4,6 +4,11 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Optional;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
@@ -24,6 +29,9 @@ import co.edu.usbcali.bank.repository.UserRepository;
 @Scope("singleton")
 public class OperacionBancariaImpl implements OperacionBancaria{
 	
+	
+	private final static Logger log = LoggerFactory.getLogger(OperacionBancariaImpl.class); 
+	
 	@Autowired
 	CuentaRepository cuentaRepository;
 	
@@ -34,6 +42,16 @@ public class OperacionBancariaImpl implements OperacionBancaria{
 
 	@Autowired
 	TipoTransaccionRepository tipoTransaccionRepository;
+	
+	@PostConstruct
+	void postConstruct() {
+		log.info("############ Se ejecutó el postConstruct ################");
+	}
+	
+	@PreDestroy
+	void preDestroy() {
+		log.info("############ Se ejecutó el preDestroy ################");
+	}
 	
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
