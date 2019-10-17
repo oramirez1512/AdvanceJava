@@ -1011,6 +1011,7 @@ insert into USUARIO (identificacion, usu_usuario, clave, nombre, activo, tius_id
 insert into USUARIO (identificacion, usu_usuario, clave, nombre, activo, tius_id) values (999, 'mgristonrq', 'nqyM40A0eQZ2', 'Mac Griston', 'S', 2);
 insert into USUARIO (identificacion, usu_usuario, clave, nombre, activo, tius_id) values (1000, 'jverduinrr', 'mtVXpLKopti', 'Jonathon Verduin', 'S', 2);
 
+insert into CLIENTE (CLIE_ID, NOMBRE, DIRECCION, TELEFONO, EMAIL, ACTIVO, TDOC_ID) values (9999, 'Humfried Downe 112 s', '94 12 Hintze Drive', '62-(594)716-0300', 'hdownes0@bloomberg.com', 'S', 3);
 insert into CLIENTE (CLIE_ID, NOMBRE, DIRECCION, TELEFONO, EMAIL, ACTIVO, TDOC_ID) values (1, 'Humfried Downes', '94 Hintze Drive', '62-(594)716-0300', 'hdownes0@bloomberg.com', 'S', 3);
 insert into CLIENTE (CLIE_ID, NOMBRE, DIRECCION, TELEFONO, EMAIL, ACTIVO, TDOC_ID) values (2, 'Jerrie Cannell', '5 Ridgeview Junction', '46-(124)837-1565', 'jcannell1@stanford.edu', 'S', 3);
 insert into CLIENTE (CLIE_ID, NOMBRE, DIRECCION, TELEFONO, EMAIL, ACTIVO, TDOC_ID) values (3, 'Andris Waulker', '7 Dottie Hill', '86-(583)590-5410', 'awaulker2@seesaa.net', 'S', 2);
@@ -2012,7 +2013,7 @@ insert into CLIENTE (CLIE_ID, NOMBRE, DIRECCION, TELEFONO, EMAIL, ACTIVO, TDOC_I
 insert into CLIENTE (CLIE_ID, NOMBRE, DIRECCION, TELEFONO, EMAIL, ACTIVO, TDOC_ID) values (999, 'Tiphanie Ashard', '4286 Delladonna Lane', '1-(887)502-2335', 'tashardrq@marketwatch.com', 'S', 3);
 insert into CLIENTE (CLIE_ID, NOMBRE, DIRECCION, TELEFONO, EMAIL, ACTIVO, TDOC_ID) values (1000, 'Chickie Moffet', '38807 Roth Trail', '60-(977)121-5782', 'cmoffetrr@photobucket.com', 'S', 1);
 
-
+insert into CUENTA (CUEN_ID, SALDO, CLAVE, ACTIVA, CLIE_ID) values ('9999-9999-9999-9999', 2032719, 'JIxErs', 'S', 9999);
   insert into CUENTA (CUEN_ID, SALDO, CLAVE, ACTIVA, CLIE_ID) values ('4640-0341-9387-5781', 2032719, 'JIxErs', 'S', 860);
   insert into CUENTA (CUEN_ID, SALDO, CLAVE, ACTIVA, CLIE_ID) values ('1630-2511-2937-7299', 9440475, 'tRVxmv', 'S', 346);
   insert into CUENTA (CUEN_ID, SALDO, CLAVE, ACTIVA, CLIE_ID) values ('6592-7866-3024-5314', 511124, 'q3ILjU', 'S', 67);

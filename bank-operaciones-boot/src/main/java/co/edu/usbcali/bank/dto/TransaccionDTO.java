@@ -7,6 +7,7 @@ public class TransaccionDTO {
 	private String cuenId;
 	private BigDecimal valor;
 	private String usuUsuario;
+	
 	public String getCuenId() {
 		return cuenId;
 	}
@@ -23,16 +24,6 @@ public class TransaccionDTO {
 		return usuUsuario;
 	}
 	public void setUsuUsuario(String usuUsuario) {
-		this.usuUsuario = usuUsuario;
-	}
-	public TransaccionDTO() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public TransaccionDTO(String cuenId, BigDecimal valor, String usuUsuario) {
-		super();
-		this.cuenId = cuenId;
-		this.valor = valor;
 		this.usuUsuario = usuUsuario;
 	}
 }
