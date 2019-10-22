@@ -19,45 +19,42 @@ public class OperacionBancariaController {
 	OperacionBancariaService operacionBancaria;
 	
 	@PostMapping("transferir")
-	public ResponseEntity<?>  transferir (@RequestBody TransferenciaDTO transferenciaDTO){
+	public ResponseEntity<?> transferir(@RequestBody TransferenciaDTO transferenciaDTO)
+	{
 		try {
-			Long idTransaccion = operacionBancaria.transferir(
-					transferenciaDTO.getCuenIdOrigen(),
-					transferenciaDTO.getCuenIdDestino(),
-					transferenciaDTO.getValor(),
-					transferenciaDTO.getUsuUsuario()
-				);
+			Long idTransaccion=operacionBancaria.transferir(
+					
+					transferenciaDTO.getCuenIdOrigen(), 
+					transferenciaDTO.getCuenIdDestino(), 
+					transferenciaDTO.getValor(), 
+					transferenciaDTO.getUsuUsuario());
 			return ResponseEntity.ok().body(idTransaccion);
-		}catch(Exception e){
-			return ResponseEntity.badRequest().body(new ResponseError(400, e.getMessage()));
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().body(new ResponseError(400,e.getMessage()));
+		}
+		
+	}
+
+	@PostMapping("consignar")
+	public ResponseEntity<?> consignar(@RequestBody TransaccionDTO transaccionDTO) {
+		try {
+			Long idTransaccion=operacionBancaria.consignar(transaccionDTO.getCuenId(), transaccionDTO.getValor(), transaccionDTO.getUsuUsuario());
+			
+			return ResponseEntity.ok().body(idTransaccion);
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().body(new ResponseError(400,e.getMessage()));
 		}
 	}
 	
-	@PostMapping("consignar")
-	public ResponseEntity<?> consignar(@RequestBody TransaccionDTO transaccionDTO){
+	@PostMapping("retirar")
+	public ResponseEntity<?> retirar(@RequestBody TransaccionDTO transaccionDTO) {
 		try {
-			Long idTransaccion = operacionBancaria.consignar(
-					transaccionDTO.getCuenId(),
-					transaccionDTO.getValor(), 
-					transaccionDTO.getUsuUsuario()
-				);
+			Long idTransaccion=operacionBancaria.retirar(transaccionDTO.getCuenId(), transaccionDTO.getValor(), transaccionDTO.getUsuUsuario());
+			
 			return ResponseEntity.ok().body(idTransaccion);
-		}catch(Exception e) {
-			return ResponseEntity.badRequest().body(new ResponseError(400, e.getMessage()));
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().body(new ResponseError(400,e.getMessage()));
 		}
 	}
 
-	@PostMapping("retirar")
-	public ResponseEntity<?> retirar(@RequestBody TransaccionDTO transaccionDTO){
-		try {
-			Long idTransaccion = operacionBancaria.retirar(
-					transaccionDTO.getCuenId(),
-					transaccionDTO.getValor(), 
-					transaccionDTO.getUsuUsuario()
-				);
-			return ResponseEntity.ok().body(idTransaccion);
-		}catch(Exception e) {
-			return ResponseEntity.badRequest().body(new ResponseError(400, e.getMessage()));
-		}
-	}
 }

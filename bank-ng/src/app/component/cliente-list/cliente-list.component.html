@@ -1,0 +1,6 @@
+<h3>Lista Clientes</h3>
+
+<li *ngFor="let cliente of listaCliente">
+    {{cliente.clieId}} {{cliente.nombre}}
+    <button [routerLink]="[ '/cliente-edit', cliente.clieId ]">Editar</button>
+</li>

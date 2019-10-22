@@ -1,80 +1,72 @@
 package co.edu.usbcali.bank.domain;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
-import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * The persistent class for the cliente database table.
  * 
  */
 @Entity
-@NamedQuery(name="Cliente.findAll", query="SELECT c FROM Cliente c")
+@NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c")
 public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="clie_id")
+	@Column(name = "clie_id")
 	@NotNull
 	private Long clieId;
 
 	@NotNull
-	@Size(min = 1, max = 1)
+	@Size(min=1,max=1)
 	private String activo;
 
 	@NotNull
-	@Size(min = 5, max = 150)
+	@Size(min=5,max=150)
 	private String direccion;
 
 	@NotNull
-	@Email(message = "El correo electronico no es valido.")
+	@Email(message = "El email no es valido")
 	private String email;
 
-	@Column(name="fecha_creacion")
+	@Column(name = "fecha_creacion")
 	private Timestamp fechaCreacion;
 
-	@Column(name="fecha_modificacion")
+	@Column(name = "fecha_modificacion")
 	private Timestamp fechaModificacion;
 
 	@NotNull
-	@Size(min = 5, max = 150)
+	@Size(min=5,max=150)
 	private String nombre;
 
 	@NotNull
-	@Size(min = 8, max = 30)
+	@Size(min=8,max=30)
 	private String telefono;
 
-	@Column(name="usu_creador")
+	@Column(name = "usu_creador")
 	private String usuCreador;
 
-	@Column(name="usu_modificador")
+	@Column(name = "usu_modificador")
 	private String usuModificador;
 
-	//bi-directional many-to-one association to TipoDocumento
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="tdoc_id")
+	// bi-directional many-to-one association to TipoDocumento
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "tdoc_id")
 	@NotNull
 	private TipoDocumento tipoDocumento;
 
-	//bi-directional many-to-one association to Cuenta
-	@OneToMany(mappedBy="cliente")
+	// bi-directional many-to-one association to Cuenta
+	@OneToMany(mappedBy = "cliente")
 	private List<Cuenta> cuentas;
 
-	//bi-directional many-to-one association to CuentaRegistrada
-	@OneToMany(mappedBy="cliente")
+	// bi-directional many-to-one association to CuentaRegistrada
+	@OneToMany(mappedBy = "cliente")
 	private List<CuentaRegistrada> cuentaRegistradas;
 
 	public Cliente() {
